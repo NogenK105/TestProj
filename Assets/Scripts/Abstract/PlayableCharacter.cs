@@ -23,6 +23,7 @@ public abstract class PlayableCharacter : IDamagable
 
     public void Die()
     {
+        //
         Debug.Log("You dead");
     }
 }
