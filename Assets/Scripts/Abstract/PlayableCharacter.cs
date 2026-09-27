@@ -1,16 +1,28 @@
 using UnityEngine;
 
-public class PlayableCharacter : MonoBehaviour
+public abstract class PlayableCharacter : IDamagable
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected int speed;
+    protected int maxHP;
+    protected int currentHP;
+    public abstract void Movement();
+
+    public abstract void SpecialAbility();
+
+    public abstract void ApplyDamage(IDamagable damagable);
+
+    public void TakeDamage(int howMuch)
     {
-        
+        currentHP -= howMuch;
+
+        if (currentHP <= 0)
+        {
+            Die();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Die()
     {
-        
+        Debug.Log("You dead");
     }
 }

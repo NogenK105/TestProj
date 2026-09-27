@@ -1,16 +1,22 @@
 using UnityEngine;
 
-public class Trap : MonoBehaviour
+public abstract class Trap : IDamagable
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    LayerMask whatIDamage;
+		
+	void ApplyDamage(IDamagable damagable)
     {
-        
+        damagable.TakeDamage(1);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void TakeDamage(int howMuch)
     {
-        
+        Die();
     }
+
+    public virtual void Die()
+    {
+        //Implementation of destroying the trap
+    }
+
 }
